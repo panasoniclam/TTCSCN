@@ -11,7 +11,7 @@ app.set("view engine","ejs") ;
 app.set("views",'./views')
 app.get('/',(rep,res)=>{
     
-         res.render('challenHtml')
+         res.render('webhtml')
      
 });
 module.exports = app
