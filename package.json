@@ -1,0 +1,25 @@
+{
+  "name": "ttcscn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panasoniclam/TTCSCN.git"
+  },
+  "author": "lamnn8",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panasoniclam/TTCSCN/issues"
+  },
+  "homepage": "https://github.com/panasoniclam/TTCSCN#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  }
+}
