@@ -1,0 +1,25 @@
+*{
+    padding:0  ;
+    margin: 0 auto
+}
+.header{
+    width: 1170px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(223, 206, 206);
+    text-align: center
+}
+.contend{
+    width: 1170px;
+    min-height: 860px;
+    background-color: rgb(34, 31, 31);
+    text-align: center;
+    padding-top:20px
+}
+.footer {
+    width: 1170px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color:rgb(107, 70, 70);
+    text-align: center
+}
