@@ -11,7 +11,7 @@ app.set("view engine","ejs") ;
 app.set("views",'./views')
 app.get('/',(rep,res)=>{
     
-         res.render('layout2')
+         res.render('layout3')
      
 });
 module.exports = app
