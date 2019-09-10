@@ -11,7 +11,7 @@ app.set("view engine","ejs") ;
 app.set("views",'./views')
 app.get('/',(rep,res)=>{
     
-         res.render('boostrapColumn')
+         res.render('boostrapTable')
      
 });
 module.exports = app
