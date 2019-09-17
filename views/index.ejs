@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="example.txt" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="user.json" />
+</head>
+
+<body>
+  <button id="getText">GET Text</button>
+  <h1 id="output"></h1>
+  <button id="getUser">get user</button>
+  <hr />
+  <form id="addPost">
+    <div>
+      <input type="text" id="title" placeholder="title" />
+
+    </div>
+    <div>
+      <textarea id="body" placeholder="body"></textarea>
+
+    </div>
+    <input type="submit" value="Submit">
+  </form>
+  <hr />
+  <button id="test" style="width: 30px;height:30px;color: blue">
+    test
+  </button>
+  <h1 id="result"> </h1>
+  <button id="kma">kma</button>
+  <h1 id="kmaText"></h1>
+  <hr/>
+  <form method="POST" action="/new" id="post">
+      <label for="email">email</label>
+      <input type="email" name="email"/>
+      <br/>
+      <label for="name">password</label>
+      <input type="password" name="password"/>
+         <br/>
+       <input type="submit">
+  </form>
+  <script>
+    document.getElementById('getText').addEventListener('click', getText)
+    document.getElementById('getUser').addEventListener('click', getUser)
+    document.getElementById('addPost').addEventListener('click', addPost)
+    document.getElementById('test').addEventListener('click', test)
+    document.getElementById('kma').addEventListener('click',kma)
+    document.getElementById('post').addEventListener('click',postkma)
+    function postkma(){
+        fetch('http://localhost:8080/api/v1/user',{
+          method:'POST',
+          headers:{
+            'Accepts':'application/json,text/plan',
+            'Content-type':'application/json'
+          },
+          body:{}
+        })
+
+    }
+    function kma(){
+          fetch('http://localhost:8080/api/v1/user')
+          .then(response=>response.json())
+          .then(data=>{
+           let result = '<h1>kma</h1>'
+             result += `<h2>${data.message}</h2>`
+              document.getElementById('kmaText').innerHTML = result
+              }
+          )
+    }
+  
+    function getText() {
+      fetch('example.txt')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('output').innerHTML = data
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+    function getUser() {
+      fetch('user.json')
+        .then(res => res.json())
+        .then(data => {
+          let output = '<h2>Users</h2>'
+
+          data.map((value, index) => {
+            output += `
+               <ul>
+                <li>ID: ${value.id}</li>
+                <li> name: ${value.name}</li>
+                <li> email: ${value.email}</li>
+                </ul>
+             `
+            document.getElementById('output').innerHTML = output
+          })
+        })
+    }
+    function addPost(e) {
+      e.preventDefault();
+      let title = document.getElementById('title').value;
+      let body = document.getElementById('body').value;
+
+      fetch('http://example.com/movies.json', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json,text/plan,*/*',
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({ title: title, body: body })
+
+      }).then(res => res.json())
+        .then(data => console.log(data))
+    }
+
+    async function test() {
+      let result = '<h1>test</h1>';
+      await fetch('https://api.randomuser.me')
+        .then(res => res.json())
+        .then(data => {
+          console.log(data.results)
+          data.results.map((value, index) => {
+            result += `
+                <h3> email: ${value.email}</h3>
+                <h3> gender: ${value.gender}</h3>
+                <h3>title: ${value.name.title}</h3>
+                <h3> first nama: ${value.name.first}</h3>
+                <h3> last name: ${value.name.last}</h3>
+                <h5> avatar</h5>
+                <img src="${value.picture.large}"> 
+                <img src="${value.picture.thumbnail}"> 
+                      `
+          })
+
+        })
+      document.getElementById('result').innerHTML = result;
+    }
+
+  
+    function postData(url='',data={}){
+      return fetch(url,{
+        method:'POST',
+        mode:'cors',
+        credentials:'same-origin',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data)
+      })
+      .then(response=>response.json())
+    }
+    postData('https://api.randomuser.me',{answer:42})
+    .then(data=>console.log(JSON.stringify(data)))
+    .catch(err=>console.log(err))
+  </script>
+</body>
+
+</html>
