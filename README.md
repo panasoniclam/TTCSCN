@@ -29,7 +29,6 @@ public class DBConnection {
         }catch(ClassNotFoundException e){
             e.getMessage();
         }
-            
          try {    
              DriverManager.getConnection(url,user,password);
              JOptionPane.showMessageDialog(null,"connected");
@@ -40,6 +39,9 @@ public class DBConnection {
            return connection;
     }
     public static void main(String[] args) {
+        DBConnection db  = new DBConnection();
+        db.dbConection();
+        
         
     }
 }
