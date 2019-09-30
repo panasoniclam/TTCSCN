@@ -6,11 +6,26 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.3/xlsx.full.min.js" > </script>
+     <script src="./test2.js"></script>
+     <script>
+     $('#input-b1').change(function(e){
+      const reader = new FileReader() ;
+      reader.readAsArrayBuffer(e.target.file[0]);
+      reader.onload = function(e){
+        const data = new Uint8Array(reader.result) ;
+        const wb = XLSX.read(data,{type:'array'});
+        const htmlstr =XLSX.write(wb,{sheet:"sheet1",type:'binary',bookType:'html'});
+        $('#display')[0].innerHTML += htmlstr ;
+      }
+    })
+     </script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+      <div id="display"></div>
+        <input id="input-b1" name="input-b1" type="file" class="file" data-browse-on-zone-click="true" />
        <!-- <nav class="navbar navbar-light bg-light navbar-expand-md">
             <div class="container-fluid padding">
                 <a class="navbar-brand">AAA</a>
