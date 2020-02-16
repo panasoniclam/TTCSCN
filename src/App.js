@@ -1,10 +1,10 @@
 import React from 'react'
-import LayoutUser from './components/index'
+ import Header from './components/header'
 class App extends React.Component{
     render(){
         return(
             <div>
-                 <LayoutUser/>
+                 <Header/>
             </div>
         )
     }
